@@ -1,0 +1,16 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="empty_movies_margin_small">8dp</dimen>
+
+
+    <!-- app bar dimens -->
+    <dimen name="app_bar_height">278dp</dimen>
+    <dimen name="app_bar_content_padding">25dp</dimen>
+
+    <!-- Movies dimens -->
+    <dimen name="card_corner_radius">0dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_margin">2dp</dimen>
+    <dimen name="card_image_height">180dp</dimen>
+
+</resources>

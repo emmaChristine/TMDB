@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context=".ui.views.MovieDetailsActivity">
+
+    <fragment android:name="com.demo.movies.ui.views.MovieDetailsFragment"
+        android:id="@+id/fragment_preference"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.views.MovieDetailsActivity"/>
+
+</FrameLayout>

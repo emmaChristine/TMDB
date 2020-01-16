@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/empty_movies_layout"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:showIn="@layout/fragment_movies">
+
+    <ImageView
+        android:id="@+id/empty_list_logo"
+        android:contentDescription="@string/image_content_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:src="@drawable/empty_set"
+        android:scaleType="fitXY"
+        android:padding="@dimen/empty_movies_margin_small"
+        />
+
+    <TextView
+        android:id="@+id/empty_list_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/empty_movies_message"
+        android:layout_below="@+id/empty_list_logo"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:padding="@dimen/empty_movies_margin_small"
+        android:textColor="@android:color/background_dark"
+        />
+
+</RelativeLayout>

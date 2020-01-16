@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">movies</string>
+
+    <!-- Movies screen -->
+    <string name="movies_header_title">The movie DB</string>
+    <string name="image_content_description">Movie poster</string>
+
+    <!-- Movies tab -->
+    <string name="movies_screen_title">movies</string>
+    <string name="empty_movies_message">No movies yet.</string>
+
+    <!-- Movie details screen -->
+    <string name="movies_details_screen_title">movie</string>
+    <string name="movie_field_title">Title</string>
+    <string name="movie_field_rating">Rating</string>
+    <string name="movie_field_year">Date</string>
+
+    <!-- My movies tab -->
+    <string name="my_movies_screen_title">My Movies</string>
+
+</resources>
