@@ -15,11 +15,11 @@ The application presents a list of popular movies from The Movie Database, toget
 [IN PROGRESS] PagedAdapter.
 
 Assumptions: 
-The API does not return page_size, but we can compute it  by `total_result/total_pages= 20`.
+* The API does not return page_size, but we can compute it  by `total_result/total_pages= 20`.
 (total_results": 10000,
   "total_pages": 500)
 
-- this app is single user only.
+* this app is single user only.
 
 # Development Environment
 
@@ -55,7 +55,7 @@ Copy-paste  API Key in `gradle.properties`:
 
 # Ideas of improvements !
 
-In terms of features:
+## In terms of features:
 
 * most certainly the popular movies list is not immutable, so we could refresh the list in the background, at a certain interval that makes sense for the product.
 
@@ -67,7 +67,7 @@ In terms of features:
 
 * depending on usage, we could decide to remove the least recently used cached items.
 
-In terms of implementation:
+## In terms of implementation:
 
 * To avoid Glide having to resize the image to fit the size of the ImageView, we should have an ImageService in charge of image manipulation and storage of different sizes (large, medium, thumbnail etc). And based on where we want to display the image, use the respective image representation.
 
@@ -86,7 +86,7 @@ If the movie details are immutable then server-side, then every second time we o
 
 * Configure Sonarqube to monitor code vulnerabilities.
 
-In terms of QA:
+## In terms of QA:
 
 * Add tests that parse local json to avoid hitting PROD.
 
