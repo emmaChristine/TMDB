@@ -30,6 +30,10 @@ internal class MovieMarkAsFavouriteToMyMoviesActivityTest {
 
     @Test
     fun movieMarkAsFavouriteToMyMoviesActivityTest() {
+
+        // wait for all animations to be completed
+        Thread.sleep(2000)
+
         val cardView = onView(
             allOf(
                 childAtPosition(

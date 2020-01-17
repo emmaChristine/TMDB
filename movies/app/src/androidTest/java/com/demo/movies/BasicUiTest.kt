@@ -1,26 +1,21 @@
 package com.demo.movies
 
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.rule.ActivityTestRule
+import com.demo.movies.framework.AcceptanceTest
 import com.demo.movies.ui.views.MainActivity
 import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 
 /**
  * Simple UI test.
  */
-@RunWith(AndroidJUnit4::class)
-class BasicUiTest {
+
+internal class BasicUiTest : AcceptanceTest<MainActivity>(MainActivity::class.java) {
 
     @get:Rule
-    private var activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
+    private var activityScenarioRule = ActivityTestRule(MainActivity::class.java)
 
     @Before
     fun setup() {}
@@ -30,6 +25,6 @@ class BasicUiTest {
 
     @Test
     fun activityLaunches() {
-        onView(withId(R.id.movies_list)).check(matches(isDisplayed()))
+        checkThat.viewIsVisible(R.id.movies_list)
     }
 }

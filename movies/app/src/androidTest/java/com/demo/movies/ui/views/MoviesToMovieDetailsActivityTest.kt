@@ -30,6 +30,11 @@ internal class MoviesToMovieDetailsActivityTest {
 
     @Test
     fun mainActivityTest() {
+
+        // wait for all animations to be completed
+        Thread.sleep(2000)
+
+
         val cardView = onView(
             allOf(
                 childAtPosition(
@@ -46,8 +51,6 @@ internal class MoviesToMovieDetailsActivityTest {
             )
         )
         cardView.perform(click())
-
-        pressBack()
 
         pressBack()
     }
