@@ -10,11 +10,11 @@ Movies App
 ## Features
 
 The application presents a list of popular movies from The Movie Database, together with their basic details.
+(One page is fetched, ideally we should implement PagedAdapter to load movies based on user interaction.)
 The user can mark any movie as favourite, and find them in My Movies screen.
 
-[IN PROGRESS] PagedAdapter for Movies screen.
-
 Assumptions: 
+
 * The API does not return page_size, but we can compute it  by `total_result/total_pages= 20`.
 (total_results": 10000,
   "total_pages": 500)
@@ -57,26 +57,22 @@ Copy-paste  API Key in `gradle.properties`:
 
 ### In terms of features:
 
+[IN PROGRESS] PagedAdapter for Movies screen. At the moment we only fetch first page, but we should use a PagedAdapter with RecyclerView to load pages based on user interaction.
+
 * most certainly the popular movies list is not immutable, so we could refresh the list in the background, at a certain interval that makes sense for the product.
 
 * add filtering capabilities, such as release date or language.
 
-* provide share actions to other apps.
-
-* add the date when user saved the movie so that we can organize the saved movies later on.
+* store the date when user saved the movie so that we can organize the saved movies later on.
 
 * depending on usage, we could decide to remove the least recently used cached items.
+
 
 ### In terms of implementation:
 
 * To avoid Glide having to resize the image to fit the size of the ImageView, we should have an ImageService in charge of image manipulation and storage of different sizes (large, medium, thumbnail etc). And based on where we want to display the image, use the respective image representation.
 
-* When user opens the MovieDetails and there is no network connection, we should fetch the information from local repository if available.
-If the movie details are immutable then server-side, then every second time we open MovieDetails we could read from DB.
-
 * Display placeholder image in case the movie image is unavailable for download.
-
-* Show placeholder list items in the PagedList.
 
 * Create more drawables for different res, and use copyright images in a production app.
 
@@ -86,7 +82,8 @@ If the movie details are immutable then server-side, then every second time we o
 
 * Configure Sonarqube to monitor code vulnerabilities.
 
+
 ### In terms of QA:
 
-* Add tests that parse local json to avoid hitting PROD.
+* More code coverage, add tests that mock the API responses.
 
