@@ -67,11 +67,6 @@ internal class MoviesAdapterPaging(private val activity: FragmentActivity) : Pag
 
     fun showMovieDetails(movie: Movie) {
         @Suppress("UNCHECKED_CAST") val intent = Intent(activity, MovieDetailsActivity::class.java)
-            .putExtra("image", movie.poster_path)
-            .putExtra("date", movie.release_date)
-            .putExtra("title", movie.title)
-            .putExtra("average", movie.vote_average)
-            .putExtra("poster", movie.poster_path)
             .putExtra(MoviesFragment.MOVIE_ID_DATA_KEY, movie.id)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)

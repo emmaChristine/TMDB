@@ -51,6 +51,7 @@ internal class MoviesAdapter(private val activity: FragmentActivity) : RecyclerV
         }
     }
 
+    // TODO serialize Movie
     fun showMovieDetails(movie: Movie) {
         @Suppress("UNCHECKED_CAST") val intent = Intent(activity, MovieDetailsActivity::class.java)
             .putExtra(MoviesFragment.MOVIE_ID_DATA_KEY, movie.id)

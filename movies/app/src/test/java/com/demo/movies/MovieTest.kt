@@ -6,7 +6,6 @@ import com.demo.movies.data.dto.Movie
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import java.util.*
 
 class MovieTest {
 

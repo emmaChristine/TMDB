@@ -38,7 +38,7 @@ class MoviesFragment : Fragment() {
 
         observeAdapter()
 
-        // Paginated adapter is not yet finalized
+        // TODO Paginated adapter is not yet finalized
         //observePaginatedAdapter()
     }
 
@@ -62,14 +62,14 @@ class MoviesFragment : Fragment() {
 
         movies_list.adapter = moviesAdapter
 
-        // Paginated adapter is not yet finalized
+        // TODO Paginated adapter is not yet finalized
         //movies_list.adapter = moviesAdapterPaginated
     }
 
     private fun loadMoviesList() {
         loading_indicator.visibility = View.VISIBLE
 
-        // Paginated adapter is not yet finalized
+        // TODO Paginated adapter is not yet finalized
         moviesViewModel.fetchPopularMoviesPaginated(1)
     }
     // endregion render
