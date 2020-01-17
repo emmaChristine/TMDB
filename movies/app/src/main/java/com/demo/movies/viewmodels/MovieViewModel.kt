@@ -16,8 +16,11 @@ class MovieViewModel(application: Application) : BaseViewModel(application) {
         const val FIRST_PAGE = 1
     }
 
-
+    // popular movies
     var popularMoviesLiveData = MutableLiveData<MutableList<Movie>>()
+
+    // my movies
+    var myMoviesLiveData = MutableLiveData<MutableList<Movie>>()
 
     // region logic
 
@@ -49,6 +52,12 @@ class MovieViewModel(application: Application) : BaseViewModel(application) {
     fun storePopularMovies(list: MutableList<Movie>) {
         scope.launch {
             repository.savePopularMoviesToLocal(list)
+        }
+    }
+
+    fun fetchMyMovies() {
+        scope.launch {
+            myMoviesLiveData.postValue(repository.getFavouriteMoviesFromLocal())
         }
     }
 

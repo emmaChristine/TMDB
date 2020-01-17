@@ -7,28 +7,11 @@ import com.demo.movies.data.remote.MoviesApi
 class MoviesRepository(val api : MoviesApi, val movieDao: MovieDao) : BaseRepository() {
 
 
-     suspend fun getPopularMovies() : MutableList<Movie>?{
-
-
-//         if (isNetworkConnected(mov)) {
-             val moviesResponse = safeApiCall(
-                 call = {api.getPopularMovies().await()},
-                 errorMessage = "Error Fetching Popular Movies"
-             )
-
-             return moviesResponse?.results?.toMutableList()
-//         }
-
-
-
-    }
-
     suspend fun getPopularMoviesPaginated(pageId: Int): MutableList<Movie>?{
 
         val moviesResponse = safeApiCall(
             call = {api.getPopularMoviesPaginated(pageId).await()},
-            errorMessage = "Error Fetching Popular Movies"
-        )
+            errorMessage = "Error Fetching Popular Movies")
 
         return moviesResponse?.results?.toMutableList()
 
@@ -37,9 +20,8 @@ class MoviesRepository(val api : MoviesApi, val movieDao: MovieDao) : BaseReposi
     suspend fun getMovieById(id: Int) : Movie? {
 
         return safeApiCall(
-        call = { api.getMovieById(id).await()},
-        errorMessage = "Error Fetching Movie details"
-    )
+            call = { api.getMovieById(id).await()},
+            errorMessage = "Error Fetching Movie details")
 
     }
 
