@@ -11,8 +11,8 @@
     <ImageView
         android:id="@+id/empty_list_logo"
         android:contentDescription="@string/image_content_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/empty_movies_logo_size"
+        android:layout_height="@dimen/empty_movies_logo_size"
         android:layout_centerInParent="true"
         android:gravity="center"
         android:src="@drawable/empty_set"

@@ -10,9 +10,9 @@ Movies App
 ## Features
 
 The application presents a list of popular movies from The Movie Database, together with their basic details.
+The user can mark any movie as favourite, and find them in My Movies screen.
 
-[IN PROGRESS] The user is able to mark any movie as favourite and see the list of favourites at any time.
-[IN PROGRESS] PagedAdapter.
+[IN PROGRESS] PagedAdapter for Movies screen.
 
 Assumptions: 
 * The API does not return page_size, but we can compute it  by `total_result/total_pages= 20`.

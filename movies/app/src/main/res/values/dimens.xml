@@ -12,5 +12,6 @@
     <dimen name="card_elevation">1dp</dimen>
     <dimen name="card_margin">2dp</dimen>
     <dimen name="card_image_height">180dp</dimen>
+    <dimen name="empty_movies_logo_size">100dp</dimen>
 
 </resources>
