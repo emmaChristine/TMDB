@@ -3,6 +3,7 @@ package com.demo.movies
 import com.demo.movies.TestUtils.POSTER_DEFAULT
 import com.demo.movies.TestUtils.movieDefault
 import com.demo.movies.data.dto.Movie
+import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
@@ -14,6 +15,10 @@ class MovieTest {
     @Before
     fun setUp() {
         movie = movieDefault
+    }
+
+    @After
+    fun tearDown() {
     }
 
     @Test

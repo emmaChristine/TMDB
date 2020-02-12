@@ -15,7 +15,7 @@
         android:theme="@style/MoviesTheme">
 
         <activity
-            android:name=".ui.views.MainActivity"
+            android:name=".ui.views.MoviesActivity"
             android:label="@string/app_name"
             android:theme="@style/MoviesTheme">
             <intent-filter>
@@ -28,7 +28,8 @@
        <activity
             android:name=".ui.views.MovieDetailsActivity"
             android:label="@string/movies_details_screen_title"
-            android:theme="@style/MoviesTheme">
+            android:theme="@style/MoviesTheme"
+           android:parentActivityName=".ui.views.MoviesActivity">
         </activity>
 
 

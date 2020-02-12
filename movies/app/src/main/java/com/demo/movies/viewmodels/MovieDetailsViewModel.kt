@@ -1,13 +1,14 @@
 package com.demo.movies.viewmodels
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import com.demo.movies.data.dto.Movie
-import com.demo.movies.ui.utils.isNetworkConnected
+import com.demo.movies.data.repository.MoviesRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class MovieDetailsViewModel(application: Application): BaseViewModel(application) {
+class MovieDetailsViewModel
+@Inject constructor(val repository: MoviesRepository) : BaseViewModel() {
 
     // region logic
 
@@ -15,11 +16,12 @@ class MovieDetailsViewModel(application: Application): BaseViewModel(application
 
     fun fetchMovieDetails(id: Int) {
         scope.launch {
-            val movieDetails: Movie? = if (isNetworkConnected(getApplication())) {
-                repository.getMovieById(id)
-            }
-            else {
-                repository.getMovieByIdFromLocal(id)
+            var movieDetails: Movie? =
+                repository.getMovieByIdFromRemote(id)
+
+            // fallback from remote to local
+            if  (movieDetails == null) {
+                movieDetails = repository.getMovieByIdFromLocal(id)
             }
 
             if (movieDetails != null) {

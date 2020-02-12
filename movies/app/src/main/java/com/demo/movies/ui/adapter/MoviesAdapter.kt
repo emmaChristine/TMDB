@@ -1,11 +1,11 @@
 package com.demo.movies.ui.adapter
 
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.demo.movies.AppConstants.TMDB_IMAGE_SERVICE_BASE_URL
 import com.demo.movies.R
@@ -16,8 +16,9 @@ import com.demo.movies.ui.views.MoviesFragment
 import kotlinx.android.synthetic.main.movie_item_row.view.*
 import java.util.*
 
+
 // Movies list adapter
-internal class MoviesAdapter(private val activity: FragmentActivity) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+internal class MoviesAdapter(private val activity: Activity) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
 
     private var movieList: List<Movie> = Collections.emptyList()
 
@@ -51,10 +52,12 @@ internal class MoviesAdapter(private val activity: FragmentActivity) : RecyclerV
         }
     }
 
-    // TODO serialize Movie
     fun showMovieDetails(movie: Movie) {
         @Suppress("UNCHECKED_CAST") val intent = Intent(activity, MovieDetailsActivity::class.java)
-            .putExtra(MoviesFragment.MOVIE_ID_DATA_KEY, movie.id)
+            .apply{
+                putExtra(MoviesFragment.MOVIE_ID_DATA_KEY, movie.id)
+            }
+
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         activity.startActivity(intent)
     }

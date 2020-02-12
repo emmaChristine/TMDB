@@ -26,7 +26,7 @@ internal class MovieMarkAsFavouriteToMyMoviesActivityTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(MoviesActivity::class.java)
 
     @Test
     fun movieMarkAsFavouriteToMyMoviesActivityTest() {

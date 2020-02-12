@@ -26,7 +26,7 @@ internal class MoviesToMovieDetailsActivityTest {
 
     @Rule
     @JvmField
-    var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+    var mActivityTestRule = ActivityTestRule(MoviesActivity::class.java)
 
     @Test
     fun mainActivityTest() {

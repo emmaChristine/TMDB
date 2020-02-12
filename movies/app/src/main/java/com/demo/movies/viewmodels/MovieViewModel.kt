@@ -1,15 +1,16 @@
 package com.demo.movies.viewmodels
 
-import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
 import androidx.paging.PagedList
 import com.demo.movies.data.dto.Movie
-import com.demo.movies.ui.utils.isNetworkConnected
+import com.demo.movies.data.repository.MoviesRepository
 import kotlinx.coroutines.launch
 import timber.log.Timber
+import javax.inject.Inject
 
-class MovieViewModel(application: Application) : BaseViewModel(application) {
+class MovieViewModel
+@Inject constructor(val repository: MoviesRepository) : BaseViewModel() {
 
     companion object {
         const val PAGE_SIZE = 20
@@ -26,12 +27,11 @@ class MovieViewModel(application: Application) : BaseViewModel(application) {
 
 
     fun fetchPopularMoviesPaginated(pageId: Int) {
+
         scope.launch {
-            val popularMovies: MutableList<Movie>? = if (isNetworkConnected(getApplication())) {
-                repository.getPopularMoviesPaginated(pageId)
-            } else {
-                repository.getPopularMoviesFromLocal()
-            }
+            val popularMovies: MutableList<Movie>? =
+
+                repository.getPopularMovies(pageId)
 
             if (popularMovies != null) {
                 Timber.d("Finished loading " + popularMovies.count() + " movies")
@@ -57,13 +57,14 @@ class MovieViewModel(application: Application) : BaseViewModel(application) {
 
     fun fetchMyMovies() {
         scope.launch {
-            myMoviesLiveData.postValue(repository.getFavouriteMoviesFromLocal())
+            myMoviesLiveData.postValue(repository.getPopularMoviesFromLocal())
         }
     }
 
     // endregion logic
 
     // region Pagination - in progress
+    // TODO finish off the paging functionality
 
     private val pagedListConfig = PagedList.Config.Builder()
         .setEnablePlaceholders(true)
@@ -72,8 +73,7 @@ class MovieViewModel(application: Application) : BaseViewModel(application) {
         .build()
 
 
-    // TODO finish off the paging functionality
-     inner class MovieDataSource : PageKeyedDataSource<Int, Movie>() {
+     inner class MoviePaginatedDataSource : PageKeyedDataSource<Int, Movie>() {
 
         override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
 

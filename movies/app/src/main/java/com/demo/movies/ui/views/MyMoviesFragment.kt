@@ -5,23 +5,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.demo.movies.R
 import com.demo.movies.ui.adapter.MoviesAdapter
 import com.demo.movies.viewmodels.MovieViewModel
+import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.empty_movies_list.*
 import kotlinx.android.synthetic.main.fragment_movies.*
 import timber.log.Timber
+import javax.inject.Inject
 
-// Local list of favourite movies
-// no loading indicator provided
+
+/**.
+ * Local list of favourite movies
+ *
+ */
 class MyMoviesFragment: Fragment() {
 
-    // Obtain ViewModel
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var moviesViewModel: MovieViewModel
-
 
     private lateinit var moviesAdapter: MoviesAdapter
 
@@ -30,9 +37,18 @@ class MyMoviesFragment: Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        moviesViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
         observeAdapter()
     }
+
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+
+        moviesViewModel = ViewModelProviders.of(activity!!, viewModelFactory)
+            .get(MovieViewModel::class.java)
+    }
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_my_movies, container, false)
