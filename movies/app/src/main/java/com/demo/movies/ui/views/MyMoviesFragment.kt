@@ -5,15 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.demo.movies.R
 import com.demo.movies.ui.adapter.MoviesAdapter
-import com.demo.movies.viewmodels.MovieViewModel
-import dagger.android.support.DaggerFragment
+import com.demo.movies.ui.viewmodels.MovieViewModel
 import kotlinx.android.synthetic.main.empty_movies_list.*
 import kotlinx.android.synthetic.main.fragment_movies.*
 import timber.log.Timber

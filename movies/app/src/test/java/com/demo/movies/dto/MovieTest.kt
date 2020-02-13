@@ -1,12 +1,19 @@
-package com.demo.movies
+package com.demo.movies.dto
 
+import com.demo.movies.TestUtils.DEFAULT_MOVIE_AVERAGE
+import com.demo.movies.TestUtils.DEFAULT_MOVIE_NAME
+import com.demo.movies.TestUtils.DEFAUL_MOVIE_RELEASE_DATE
 import com.demo.movies.TestUtils.POSTER_DEFAULT
 import com.demo.movies.TestUtils.movieDefault
 import com.demo.movies.data.dto.Movie
+import com.demo.movies.data.repository.MoviesRepository
+import com.demo.movies.ui.viewmodels.MovieViewModel
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
+
+import org.mockito.Mockito.mock
 
 class MovieTest {
 
@@ -18,15 +25,14 @@ class MovieTest {
     }
 
     @After
-    fun tearDown() {
-    }
+    fun tearDown() {}
 
     @Test
     fun test_default_values() {
         Assert.assertEquals(1, movie.id)
-        Assert.assertEquals("Not another Final Destination", movie.title)
-        Assert.assertEquals("1.01.2020", movie.release_date)
-        Assert.assertEquals(6.0, movie.vote_average, 0.1 )
+        Assert.assertEquals(DEFAULT_MOVIE_NAME, movie.title)
+        Assert.assertEquals(DEFAUL_MOVIE_RELEASE_DATE, movie.release_date)
+        Assert.assertEquals(DEFAULT_MOVIE_AVERAGE, movie.vote_average, 0.1 )
         Assert.assertEquals(POSTER_DEFAULT, movie.poster_path)
         Assert.assertEquals(false, movie.isSaved)
     }

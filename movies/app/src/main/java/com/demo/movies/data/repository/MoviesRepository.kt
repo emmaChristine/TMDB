@@ -9,8 +9,8 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 
-@Singleton
-class MoviesRepository @Inject constructor(
+
+open class MoviesRepository @Inject constructor(
     val movieDao: MovieDao,
     val api: MoviesApi
 ): BaseRepository() {

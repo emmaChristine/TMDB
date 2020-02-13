@@ -1,4 +1,4 @@
-package com.demo.movies.viewmodels
+package com.demo.movies.ui.viewmodels
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope

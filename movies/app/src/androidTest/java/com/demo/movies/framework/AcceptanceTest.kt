@@ -6,8 +6,9 @@ import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import org.junit.Rule
 import org.junit.runner.RunWith
+import org.junit.runners.JUnit4
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(JUnit4::class)
 abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
 
     @Rule

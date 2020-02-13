@@ -1,16 +1,14 @@
-package com.demo.movies.ui.views
-
+package com.demo.movies.ui
 
 import android.view.View
 import android.view.ViewGroup
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.Espresso.pressBack
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.filters.LargeTest
+import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import androidx.test.runner.AndroidJUnit4
 import com.demo.movies.R
+import com.demo.movies.ui.views.MoviesActivity
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.`is`
@@ -20,20 +18,19 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@LargeTest
+
 @RunWith(AndroidJUnit4::class)
-internal class MoviesToMovieDetailsActivityTest {
+class MovieDetailsActivityTest {
 
     @Rule
     @JvmField
     var mActivityTestRule = ActivityTestRule(MoviesActivity::class.java)
 
     @Test
-    fun mainActivityTest() {
+    fun movieDetailsMarkAsFavouriteTest() {
 
         // wait for all animations to be completed
         Thread.sleep(2000)
-
 
         val cardView = onView(
             allOf(
@@ -41,8 +38,26 @@ internal class MoviesToMovieDetailsActivityTest {
                     allOf(
                         withId(R.id.movies_list),
                         childAtPosition(
-                            withClassName(`is`("android.widget.RelativeLayout")),
+                            withId(R.id.fragment_movies),
                             2
+                        )
+                    ),
+                    7
+                ),
+                isDisplayed()
+            )
+        )
+        cardView.perform(click())
+
+        val floatingActionButton = onView(
+            allOf(
+                withId(R.id.fab_save_movie),
+                childAtPosition(
+                    allOf(
+                        withId(R.id.fragment_preference),
+                        childAtPosition(
+                            withClassName(`is`("android.widget.FrameLayout")),
+                            0
                         )
                     ),
                     2
@@ -50,9 +65,7 @@ internal class MoviesToMovieDetailsActivityTest {
                 isDisplayed()
             )
         )
-        cardView.perform(click())
-
-        pressBack()
+        floatingActionButton.perform(click())
     }
 
     private fun childAtPosition(

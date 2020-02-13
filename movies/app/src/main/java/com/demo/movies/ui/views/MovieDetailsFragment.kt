@@ -12,7 +12,7 @@ import com.demo.movies.R
 import com.demo.movies.ui.utils.loadFromUrl
 import com.demo.movies.ui.utils.showSnackbar
 import com.demo.movies.ui.views.MoviesFragment.Companion.MOVIE_ID_DATA_KEY
-import com.demo.movies.viewmodels.MovieDetailsViewModel
+import com.demo.movies.ui.viewmodels.MovieDetailsViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_movie_details.*
 import timber.log.Timber
@@ -58,7 +58,7 @@ class MovieDetailsFragment: Fragment() {
 
         fab_save_movie.setOnClickListener{ view ->
 
-            view.showSnackbar("Movie saved", R.color.colorPrimaryLight, Snackbar.LENGTH_LONG).show()
+            view.showSnackbar(resources.getString(R.string.movie_saved), R.color.colorPrimaryLight, Snackbar.LENGTH_LONG).show()
 
             movieDetailsViewModel.markMovieAsfavourite(activity!!.intent.extras!!.getInt(MOVIE_ID_DATA_KEY))
         }

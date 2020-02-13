@@ -1,4 +1,4 @@
-package com.demo.movies
+package com.demo.movies.util
 
 import android.app.Application
 

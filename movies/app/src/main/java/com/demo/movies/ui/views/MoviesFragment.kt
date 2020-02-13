@@ -5,17 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.demo.movies.R
 import com.demo.movies.data.dto.Movie
 import com.demo.movies.ui.adapter.MoviesAdapter
 import com.demo.movies.ui.adapter.MoviesAdapterPaging
-import com.demo.movies.viewmodels.MovieViewModel
-import dagger.android.support.DaggerFragment
+import com.demo.movies.ui.viewmodels.MovieViewModel
 import kotlinx.android.synthetic.main.empty_movies_list.*
 import kotlinx.android.synthetic.main.fragment_movies.*
 import timber.log.Timber
@@ -24,7 +21,7 @@ import javax.inject.Inject
 
 /**
  *  MoviesFragment displays a list of popular movies on TMDB.
- *  For a simpler demo we only display first page of results.
+ *  For the sake of simplicity we only display first page of results.
  *
  *  Real apps should use Paging library with paginated adapter.
  *
@@ -42,7 +39,6 @@ class MoviesFragment : Fragment() {
     private lateinit var moviesAdapter: MoviesAdapter
 
     // TODO to use paginated adapter
-    // not used yet
     private lateinit var moviesAdapterPaginated: MoviesAdapterPaging
 
     private val moviesObserver = Observer<MutableList<Movie>> { moviesList ->
@@ -57,6 +53,7 @@ class MoviesFragment : Fragment() {
             else {
                 // no movies in repository
                 Timber.d("No movies available.")
+                loading_indicator.visibility = View.GONE
                 empty_movies_layout.visibility = View.VISIBLE
             }
         }
@@ -85,10 +82,6 @@ class MoviesFragment : Fragment() {
         moviesAdapter = MoviesAdapter(activity!!)
 
         initView()
-
-        // Always reloading data for simplicity. Real apps should only do this on first load and
-        // when navigating back to this destination.
-        //loadMoviesList()
     }
 
 

@@ -1,4 +1,4 @@
-package com.demo.movies.viewmodels
+package com.demo.movies.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import com.demo.movies.data.dto.Movie
@@ -10,11 +10,15 @@ import javax.inject.Inject
 class MovieDetailsViewModel
 @Inject constructor(val repository: MoviesRepository) : BaseViewModel() {
 
+    var movieId: Int = 0
+
     // region logic
 
     val movieDetailsLiveData = MutableLiveData<Movie>()
 
     fun fetchMovieDetails(id: Int) {
+        movieId = id
+
         scope.launch {
             var movieDetails: Movie? =
                 repository.getMovieByIdFromRemote(id)

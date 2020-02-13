@@ -1,4 +1,4 @@
-package com.demo.movies.viewmodels
+package com.demo.movies.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.paging.PageKeyedDataSource
@@ -66,34 +66,34 @@ class MovieViewModel
     // region Pagination - in progress
     // TODO finish off the paging functionality
 
-    private val pagedListConfig = PagedList.Config.Builder()
-        .setEnablePlaceholders(true)
-        .setInitialLoadSizeHint(PAGE_SIZE)
-        .setPageSize(PAGE_SIZE)
-        .build()
-
-
-     inner class MoviePaginatedDataSource : PageKeyedDataSource<Int, Movie>() {
-
-        override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
-
-            fetchPopularMoviesPaginated(params.key)
-            val key = if (params.key > 1) params.key - 1 else 0
-        }
-
-        override fun loadInitial(
-            params: LoadInitialParams<Int>,
-            callback: LoadInitialCallback<Int, Movie>
-        ) {
-
-            fetchPopularMoviesPaginated(FIRST_PAGE)
-        }
-
-        override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
-            fetchPopularMoviesPaginated(params.key)
-            val key = params.key + 1
-        }
-    }
+//    private val pagedListConfig = PagedList.Config.Builder()
+//        .setEnablePlaceholders(true)
+//        .setInitialLoadSizeHint(PAGE_SIZE)
+//        .setPageSize(PAGE_SIZE)
+//        .build()
+//
+//
+//     inner class MoviePaginatedDataSource : PageKeyedDataSource<Int, Movie>() {
+//
+//        override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
+//
+//            fetchPopularMoviesPaginated(params.key)
+//            val key = if (params.key > 1) params.key - 1 else 0
+//        }
+//
+//        override fun loadInitial(
+//            params: LoadInitialParams<Int>,
+//            callback: LoadInitialCallback<Int, Movie>
+//        ) {
+//
+//            fetchPopularMoviesPaginated(FIRST_PAGE)
+//        }
+//
+//        override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Movie>) {
+//            fetchPopularMoviesPaginated(params.key)
+//            val key = params.key + 1
+//        }
+//    }
 
     // endregion pagination
 }

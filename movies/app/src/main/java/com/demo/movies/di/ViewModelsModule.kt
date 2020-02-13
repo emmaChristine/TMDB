@@ -2,9 +2,9 @@ package com.demo.movies.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.demo.movies.viewmodels.MainViewModel
-import com.demo.movies.viewmodels.MovieDetailsViewModel
-import com.demo.movies.viewmodels.MovieViewModel
+import com.demo.movies.ui.viewmodels.MainViewModel
+import com.demo.movies.ui.viewmodels.MovieDetailsViewModel
+import com.demo.movies.ui.viewmodels.MovieViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap

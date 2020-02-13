@@ -57,7 +57,7 @@ internal class MoviesAdapterPaging(private val activity: FragmentActivity) : Pag
 
 
         fun setData(movie: Movie) {
-            itemView.movie_image.loadFromUrl(TMDB_IMAGE_SERVICE_BASE_URL.plus(movie.poster_path))
+            itemView.movie_image_view.loadFromUrl(TMDB_IMAGE_SERVICE_BASE_URL.plus(movie.poster_path))
 
             itemView.setOnClickListener {
                 showMovieDetails(movie)

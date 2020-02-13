@@ -6,6 +6,7 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
+
 android {
     def config = rootProject.extensions.getByName("ext")
     compileSdkVersion config["compile_sdk"]
@@ -19,7 +20,9 @@ android {
         targetSdkVersion config["target_sdk"]
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "com.demo.movies.MyCustomTestRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        testInstrumentationRunner "com.demo.movies.util.MyTestRunner"
     }
     buildTypes {
         release {
@@ -36,6 +39,16 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+    sourceSets {
+        String sharedTestDir = 'src/sharedTest/java'
+        test {
+            java.srcDir sharedTestDir
+        }
+        androidTest {
+            java.srcDir sharedTestDir
+        }
+    }
+
     lintOptions {
         abortOnError true
         warningsAsErrors true
@@ -44,6 +57,7 @@ android {
         lintConfig file("../lint.xml")
         disable 'IconMissingDensityFolder', 'GoogleAppIndexingWarning' // Didn't copy all icons.
     }
+
 }
 
 dependencies {
@@ -59,6 +73,7 @@ dependencies {
     def roomVersion = "2.2.3"
     def archLifecycleVersion = "2.2.0-rc02"
     def daggerVersion = "2.23.2"
+    def mockitoVersion = "2.0.2-beta"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -105,7 +120,6 @@ dependencies {
     // ViewModel Kotlin support
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
 
-
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit2_version"
     implementation "com.google.code.gson:gson:$gsonVersion"
@@ -127,12 +141,22 @@ dependencies {
 
     // testing
     testImplementation 'junit:junit:4.12'
+    testImplementation "org.mockito:mockito-all:$mockitoVersion"
+    testImplementation 'org.mockito:mockito-core:2.27.0'
+
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
+
+    androidTestImplementation 'org.mockito:mockito-core:2.27.0'
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     androidTestImplementation "androidx.test.espresso:espresso-intents:3.2.0"
     androidTestImplementation "androidx.room:room-testing:$roomVersion"
     androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0"
-    androidTestImplementation "androidx.arch.core:core-testing:2.0.0"
+    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
     androidTestImplementation 'androidx.test:rules:1.2.0-beta01'
+    androidTestImplementation 'com.squareup.okhttp3:mockwebserver:3.8.1'
 
 }
